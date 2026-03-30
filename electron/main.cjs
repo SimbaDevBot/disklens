@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron');
+const { registerScanIpc } = require('./ipc/scan.ipc.cjs');
 const path = require('node:path');
 
 const isDev = !app.isPackaged;
@@ -13,6 +14,8 @@ function createWindow() {
       nodeIntegration: false,
     },
   });
+
+  registerScanIpc(win);
 
   if (isDev) {
     win.loadURL('http://localhost:5173');
