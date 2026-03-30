@@ -89,7 +89,22 @@ export default function App() {
         </div>
         <div style={{ display: 'grid', gap: 8 }}>
           <NavItem label="Dashboard" active={route === 'dashboard'} onClick={() => nav('dashboard')} />
-          <NavItem label="Disk Analysis" active={route === 'analyze' && <Analyze />}
+          <NavItem label="Disk Analysis" active={route === 'analyze'} onClick={() => nav('analyze')} />
+          <NavItem label="Installed Apps" active={route === 'apps'} onClick={() => nav('apps')} />
+          <NavItem label="Duplicates" active={route === 'duplicates'} onClick={() => nav('duplicates')} />
+          <NavItem label="Cleanup" active={route === 'cleanup'} onClick={() => nav('cleanup')} />
+        </div>
+      </aside>
+
+      <main style={{ overflow: 'auto' }}>
+        {route === 'dashboard' && <Dashboard />}
+        {route === 'analyze' && <Analyze />}
+
+        {route === 'apps' && (
+          <Page title="Installed Apps">
+            <p style={{ margin: 0, color: '#9A9AA0' }}>Registry/AppX listing in Phase 3.</p>
+          </Page>
+        )}
 
         {route === 'duplicates' && (
           <Page title="Duplicates">
