@@ -1,4 +1,5 @@
 import React from 'react'
+import { useScanStore } from '../store/scanStore'
 
 function formatBytes(bytes: number) {
   if (!Number.isFinite(bytes)) return '—'
@@ -18,6 +19,7 @@ export default function Dashboard() {
   const [progress, setProgress] = React.useState<any>(null)
   const [result, setResult] = React.useState<any>(null)
   const [error, setError] = React.useState<string | null>(null)
+  const setLastResult = useScanStore((st) => st.setLastResult)
 
   React.useEffect(() => {
     window.electronAPI?.onScanProgress((p) => {
@@ -26,6 +28,8 @@ export default function Dashboard() {
     window.electronAPI?.onScanComplete((r) => {
       setRunning(false)
       setResult(r)
+      setLastResult(r)
+      window.location.hash = '#/analyze'
     })
   }, [])
 
