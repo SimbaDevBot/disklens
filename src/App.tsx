@@ -1,4 +1,6 @@
 import React from 'react'
+import Dashboard from './pages/Dashboard'
+import Analyze from './pages/Analyze'
 
 type RouteKey = 'dashboard' | 'analyze' | 'apps' | 'duplicates' | 'cleanup'
 
@@ -89,38 +91,27 @@ export default function App() {
           <NavItem label="Dashboard" active={route === 'dashboard'} onClick={() => nav('dashboard')} />
           <NavItem label="Disk Analysis" active={route === 'analyze'} onClick={() => nav('analyze')} />
           <NavItem label="Installed Apps" active={route === 'apps'} onClick={() => nav('apps')} />
-          <NavItem
-            label="Duplicates"
-            active={route === 'duplicates'}
-            onClick={() => nav('duplicates')}
-          />
+          <NavItem label="Duplicates" active={route === 'duplicates'} onClick={() => nav('duplicates')} />
           <NavItem label="Cleanup" active={route === 'cleanup'} onClick={() => nav('cleanup')} />
         </div>
       </aside>
 
       <main style={{ overflow: 'auto' }}>
-        {route === 'dashboard' && (
-          <Page title="Dashboard">
-            <p style={{ margin: 0, color: '#9A9AA0' }}>
-              Drive enumeration + cards will go here in Phase 1.
-            </p>
-          </Page>
-        )}
-        {route === 'analyze' && (
-          <Page title="Disk Analysis">
-            <p style={{ margin: 0, color: '#9A9AA0' }}>Treemap + table in Phase 2.</p>
-          </Page>
-        )}
+        {route === 'dashboard' && <Dashboard />}
+        {route === 'analyze' && <Analyze />}
+
         {route === 'apps' && (
           <Page title="Installed Apps">
             <p style={{ margin: 0, color: '#9A9AA0' }}>Registry/AppX listing in Phase 3.</p>
           </Page>
         )}
+
         {route === 'duplicates' && (
           <Page title="Duplicates">
             <p style={{ margin: 0, color: '#9A9AA0' }}>Duplicate scanner in Phase 4.</p>
           </Page>
         )}
+
         {route === 'cleanup' && (
           <Page title="Cleanup">
             <p style={{ margin: 0, color: '#9A9AA0' }}>Cleanup categories in Phase 5.</p>
