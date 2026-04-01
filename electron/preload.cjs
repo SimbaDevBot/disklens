@@ -10,6 +10,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
     ipcRenderer.removeAllListeners('scan:progress');
     ipcRenderer.on('scan:progress', (_e, data) => cb(data));
   },
+  getInstalledApps: () => ipcRenderer.invoke('apps:list'),
+
   onScanComplete: (cb) => {
     ipcRenderer.removeAllListeners('scan:complete');
     ipcRenderer.on('scan:complete', (_e, data) => cb(data));

@@ -2,6 +2,7 @@ declare global {
   interface Window {
     electronAPI?: {
       ping: () => string
+      getInstalledApps: () => Promise<any>
       startScan: (rootPath: string) => Promise<{ ok: boolean }>
       cancelScan: () => Promise<{ ok: boolean }>
       onScanProgress: (cb: (p: any) => void) => void

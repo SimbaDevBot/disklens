@@ -1,6 +1,7 @@
 import React from 'react'
 import Dashboard from './pages/Dashboard'
 import Analyze from './pages/Analyze'
+import Apps from './pages/Apps'
 
 type RouteKey = 'dashboard' | 'analyze' | 'apps' | 'duplicates' | 'cleanup'
 
@@ -99,12 +100,7 @@ export default function App() {
       <main style={{ overflow: 'auto' }}>
         {route === 'dashboard' && <Dashboard />}
         {route === 'analyze' && <Analyze />}
-
-        {route === 'apps' && (
-          <Page title="Installed Apps">
-            <p style={{ margin: 0, color: '#9A9AA0' }}>Registry/AppX listing in Phase 3.</p>
-          </Page>
-        )}
+        {route === 'apps' && <Apps />}
 
         {route === 'duplicates' && (
           <Page title="Duplicates">
